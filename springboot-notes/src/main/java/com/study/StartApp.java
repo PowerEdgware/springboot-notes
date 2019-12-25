@@ -1,5 +1,6 @@
 package com.study;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.springframework.beans.BeansException;
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,7 @@ import com.study.boot.config.CustomPropertiesFileApplicationListener;
 @SpringBootApplication
 @RestController
 public class StartApp {
-
+//TransactionAutoConfiguration
 	public static void main(String[] args) {
 		// SpringApplication.run(StartApp.class, args); ==>
 		AnnotationConfigApplicationContext parent = new AnnotationConfigApplicationContext();
@@ -37,7 +39,14 @@ public class StartApp {
 
 		SpringApplicationBuilder applicationBuilder = new SpringApplicationBuilder(StartApp.class);
 		applicationBuilder.headless(true).parent(parent).bannerMode(Mode.CONSOLE).web(WebApplicationType.SERVLET);
-		applicationBuilder.run(args);
+		ConfigurableApplicationContext context=	applicationBuilder.run(args);
+		
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		context.close();
 
 	}
 
