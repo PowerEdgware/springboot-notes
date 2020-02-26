@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.study.boot.config.CustomPropertiesFileApplicationListener;
+import com.study.pojo.DemoReq;
 
 @SpringBootApplication
 @RestController
+//@ImportResource
+//@PropertySource
 public class StartApp {
 //TransactionAutoConfiguration
 	public static void main(String[] args) {
@@ -42,11 +45,16 @@ public class StartApp {
 		ConfigurableApplicationContext context=	applicationBuilder.run(args);
 		
 		try {
+			//RequestContextHolder  
 			System.in.read();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		context.close();
+		////		 DispatcherServlet
+		//ExceptionHandlerExceptionResolver
+		//Driver
+		//Class.forName("com.mysql.jdbc.Driver");
 
 	}
 
@@ -62,7 +70,7 @@ public class StartApp {
 
 //	@Value
 //	private String myKey;
-
+	
 	@Autowired
 	private ConfigurableEnvironment environment;
 
@@ -76,6 +84,12 @@ public class StartApp {
 	@GetMapping("/get/all")
 	public Object getCustomProperySource() {
 		return environment.getPropertySources().get(CustomPropertiesFileApplicationListener.PROPERTY_SOURCE_NAME);
+	}
+	
+	@GetMapping("/testBean")//ServletModelAttributeMethodProcessor  //PropertyAccessorFactory
+	public String testBean(DemoReq req) {
+		System.out.println(req);
+		return "OK";
 	}
 }
 
