@@ -3,7 +3,10 @@ package com.study;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.boot.Banner.Mode;
@@ -14,18 +17,23 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.study.boot.config.CustomPropertiesFileApplicationListener;
 import com.study.pojo.DemoReq;
 
 @SpringBootApplication
-@RestController
+//@RestController
 //@ImportResource
 //@PropertySource
+@Controller
 public class StartApp {
 //TransactionAutoConfiguration
 	public static void main(String[] args) {
@@ -89,6 +97,23 @@ public class StartApp {
 	@GetMapping("/testBean")//ServletModelAttributeMethodProcessor  //PropertyAccessorFactory
 	public String testBean(DemoReq req) {
 		System.out.println(req);
+		if(req.getReqName()==null) {
+			throw new RuntimeException("请求参数不合法");
+		}
+		return "我是小灰马";
+	}
+	//StringHttpMessageConverter
+	@ExceptionHandler
+	@ResponseBody
+	public String handleException(Exception e,HttpServletResponse response) {
+//		response.setStatus(413);
+//		response.setContentType("text/html;charset=ISO-8859-1");
+//		response.setCharacterEncoding("ISO-8859-1");
+		return "系统错误："+e.getMessage()+" Language";
+	}
+	
+	@Bean
+	public String demoStr() {
 		return "OK";
 	}
 }

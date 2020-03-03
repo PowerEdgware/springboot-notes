@@ -6,6 +6,8 @@ import java.util.Enumeration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
 public class SpringReadme {
@@ -19,11 +21,12 @@ public class SpringReadme {
 		//org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
 		//org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
 		//org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\
-		
-		
+		ApplicationContext context = new ClassPathXmlApplicationContext();
+		 context.getBean("cc");//AbstractAutowireCapableBeanFactory#doCreateBean
 		// ClassLoader
 		// Thread
 		// Class
+		 //AnnotationConfigServletWebServerApplicationContext
 
 	}
 

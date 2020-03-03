@@ -10,8 +10,10 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.aop.config.AopNamespaceHandler;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.PropertyEditorRegistrySupport;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver;
@@ -40,8 +42,10 @@ public class BeanPopulate {
 //		 CustomEditorConfigurer
 		 //SingletonBeanRegistry
 		 //BeanDefinitionRegistry
-		 
+//		 PropertyAccessorFactory.forBeanPropertyAccess(target)
+		 //PropertyAccessorUtils
 //		 DispatcherServlet
+//		 AopNamespaceHandler
 
 		BeanPopulate bean = new BeanPopulate();
 		// 1.Spring bean operate
