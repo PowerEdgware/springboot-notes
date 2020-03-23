@@ -53,6 +53,6 @@ public class SpringReadme {
 			System.out.println(url.toString());
 		}
 		
-		SpringApplication.run(SpringReadme.class, args);
+		//SpringApplication.run(SpringReadme.class, args);
 	}
 }

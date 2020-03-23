@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.startup.Tomcat;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,11 +31,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.study.boot.config.CustomPropertiesFileApplicationListener;
 import com.study.pojo.DemoReq;
 
-@SpringBootApplication
+//@SpringBootApplication
 //@RestController
 //@ImportResource
 //@PropertySource
-@Controller
+//@Controller
 public class StartApp {
 //TransactionAutoConfiguration
 	public static void main(String[] args) {
@@ -63,7 +65,12 @@ public class StartApp {
 		//ExceptionHandlerExceptionResolver
 		//Driver
 		//Class.forName("com.mysql.jdbc.Driver");
-
+//		ClassPathBeanDefinitionScanner
+		//packageSearch=classpath*:com/study/**/*.class
+		//ServletContextResourcePatternResolver
+		
+		//ModelAttribute
+//		Tomcat
 	}
 
 	@Autowired
