@@ -60,5 +60,6 @@ public class BeanWrapperDemo {
 		//把自定义属性编辑器注册到Spring容器的方式
 		//1.CustomEditorConfigurer
 		//2.PropertyEditorRegistrar and PropertyEditorRegistry
+		//Instrumentation
 	}
 }

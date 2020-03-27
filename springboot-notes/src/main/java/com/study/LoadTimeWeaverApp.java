@@ -2,6 +2,7 @@ package com.study;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,12 +10,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.LoadTimeWeavingConfigurer;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.instrument.classloading.tomcat.TomcatLoadTimeWeaver;
 
 import com.study.annotation.EnableEnhancedLoadTimeWeaving;
 
 import org.springframework.context.annotation.EnableLoadTimeWeaving.AspectJWeaving;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
@@ -23,6 +26,7 @@ import org.springframework.context.annotation.ImportResource;
 
 //TODO 自定义实现
 @EnableEnhancedLoadTimeWeaving(aspectjWeaving = AspectJWeaving.DISABLED)
+@PropertySource(value = {"classpath:abc.yml"})
 public class LoadTimeWeaverApp extends SpringBootServletInitializer /* implements LoadTimeWeavingConfigurer*/ {
 
 	@Override
@@ -46,4 +50,7 @@ public class LoadTimeWeaverApp extends SpringBootServletInitializer /* implement
 //	public LoadTimeWeaver getLoadTimeWeaver() {
 //		return new TomcatLoadTimeWeaver();
 //	}
+	
+	@Value(value = "${rnd.val}")
+	String value;
 }
