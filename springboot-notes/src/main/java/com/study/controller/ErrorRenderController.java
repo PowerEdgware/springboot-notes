@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ErrorRenderController {
 
-	@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE,value = GlobalErrorController.errotPath)
-	public Map<String, String> errorPojo(HttpServletRequest request, HttpServletResponse response){
-		Map<String, String> map=new HashMap<>();
-		map.put("code", "404");
-		map.put("message", "NOT FOUND");
-		return map;
-	}
+//	@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE,value = GlobalErrorController.errotPath)
+//	public Map<String, String> errorPojo(HttpServletRequest request, HttpServletResponse response){
+//		Map<String, String> map=new HashMap<>();
+//		map.put("code", "404");
+//		map.put("message", "NOT FOUND");
+//		return map;
+//	}
 }
